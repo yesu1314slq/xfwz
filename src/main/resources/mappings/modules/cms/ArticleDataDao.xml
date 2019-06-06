@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.cms.dao.ArticleDataDao">
+    
+	<sql id="cmsArticleDataColumns">
+		a.id AS "id",
+		a.content AS "content",
+		a.copyfrom AS "copyfrom",
+		a.relation AS "relation",
+		a.allow_comment AS "allow_comment"
+	</sql>
+	
+	<sql id="cmsArticleDataJoins">
+	</sql>
+    
+	<select id="get" resultType="ArticleData">
+		SELECT 
+			<include refid="cmsArticleDataColumns"/>
+		FROM cms_article_data a
+		<include refid="cmsArticleDataJoins"/>
+		WHERE a.id = #{id}
+	</select>
+		
+	<insert id="insert">
+		INSERT INTO cms_article_data(
+			id,
+			content,
+			copyfrom,
+			relation,
+			allow_comment
+		) VALUES (
+			#{id},
+			#{content},
+			#{copyfrom},
+			#{relation},
+			#{allowComment}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE cms_article_data SET 	
+			content = #{content},
+			copyfrom = #{copyfrom},
+			relation = #{relation},
+			allow_comment = #{allowComment}
+		WHERE id = #{id}
+	</update>
+	
+	<!-- 站内搜索（模糊查询标题和内容） -->
+	<select id="findSiteList"  resultType="Article">
+		select 
+		ca.id AS "id",
+		ca.category_id AS "category.id",
+		ca.title AS "title",
+		ca.hits AS "hits",
+		ca.create_date AS "createDate",
+		ca.update_date AS "updateDate",
+		ca.link  AS "link"
+		from cms_article ca,cms_article_data cad where ca.id = cad.id and del_flag=0 and del_flag=0 and 
+(ca.title like '%${title}%' or cad.content like '%${title}%')
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY ca.weight DESC, ca.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+</mapper>

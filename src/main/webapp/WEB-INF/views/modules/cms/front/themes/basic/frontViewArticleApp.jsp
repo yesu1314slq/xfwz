@@ -1,0 +1,43 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ include file="/WEB-INF/views/modules/cms/front/include/taglib.jsp"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>${article.title} - ${category.name}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="${ctxStatic}/jquery/jquery-2.1.4.min.js"></script>
+	<!-- 引入 Bootstrap -->
+	<link href="${ctxStatic}/xfwz/Css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="${ctxStatic}/xfwz/Css/indexApp.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class="backimg">
+    <div class="fontcenter">
+        <img src="${ctxStatic}/xfwz/Images/imgapp/phone_logo.png" width="46%" style="margin:12px auto;"> 
+    </div>
+    <div class="weizhi">
+	当前位置： <a href="http://xfj.shanxi.gov.cn">首页</a><span>&gt;</span><a href="${ctx}/list-${category.id }${urlSuffix}" class="on">${category.name }</a>
+    </div>
+    <div class="detail">
+      <div class="mxycon">
+          <div class="mxycon_tit">
+              <div class="title">${article.title } </div>
+              <div class="fontcenter">来源：
+                 ${article.articleData.copyfrom }  &nbsp;&nbsp;发布时间：<fmt:formatDate value="${article.createDate}" pattern="yyyy-MM-dd"/></div>
+          </div>
+          <div class="mxycon_cont">
+             <p>${article.articleData.content}</p>
+           </div>
+      </div>
+    </div>
+  </div>
+  <div style="height:147px;"></div>
+  <!-- 底部 -->
+  <jsp:include page="footerApp.jsp"></jsp:include>
+</body>
+</html>
+<script type="text/javascript" src="${ctxStatic}/bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script>
+	$(".mxycon img").parent().css("text-indent","0px");
+</script>

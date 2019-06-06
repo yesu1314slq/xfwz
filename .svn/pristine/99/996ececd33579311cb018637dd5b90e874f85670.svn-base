@@ -1,0 +1,219 @@
+*,body{
+	margin: 0px;
+	padding:0px;
+	font-family: '微软雅黑';
+	
+}
+html{
+	min-height: 100%;
+	background-color: #f7f7f7 !important;
+}
+body{
+	
+	background-color: #f7f7f7 !important;
+}
+.fontcenter{
+	text-align: center;
+}
+.backimg{
+	background: url(../Images/bg.png) no-repeat;
+	background-color: #fff;
+}
+/*轮播图*/
+.lunbo{
+	margin: 0px 15px;
+	border-radius: 6px;
+	overflow: hidden;
+}
+.carousel-caption{
+	width: 100%;
+	left: 0px;
+	padding: 0px 10px;
+	height: 30px;
+	line-height: 30px;
+	background: rgba(29,29,29,0.67);
+	bottom: 0px;
+	text-align: left;
+	font-size: 12px;
+}
+.carousel-indicators{
+	width: auto;
+	right: 10px;
+	left: auto;
+	margin:0px;
+	bottom: 0px;
+	height: 30px;
+	line-height: 30px;
+
+}
+.carousel-indicators li{
+	border: 0px;
+	background: #fff;
+	border-radius: 0px;
+	margin:0px;
+
+}
+.carousel-indicators .active{
+	width: 10px;
+	height: 10px;
+	background: #1369c0;
+}
+.carousel-inner>.item>a>img, .carousel-inner>.item>img{
+	width:100%;
+}
+.carousel-inner .item{
+	height:250px;
+}
+.carousel-caption a{
+	color:#fff;
+}
+
+/*轮播图结束*/
+
+/*快速入口*/
+.fastenter{
+	margin:10px 15px;
+	padding:15px 0px;
+}
+.fastenter_ico{
+	width: 20%;
+	text-align: center;
+	float: left;
+}
+.fastenter_ico a{
+	color: #333;
+	text-decoration: none;
+}
+.fastenter_ico img{
+	width: 40px;
+	margin-bottom: 10px;
+}
+/*快速入口结束*/
+/*今日关注*/
+.jrgz{
+	padding:15px;
+	margin-top: 10px;
+	background: #fff;
+}
+.jrgz .title{
+	font-size: 16px;
+	border-bottom: 3px solid #1369c0;
+	padding-bottom: 10px;
+	display: inline-block;
+}
+.jrgz .more{
+	text-decoration: underline;
+
+}
+.jrgz ul{
+	margin-top: 10px;
+}
+.jrgz ul a{
+	color: #333;
+}
+.jrgz ul li{
+	list-style: inside;
+	width: 100%;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	height: 30px;
+	line-height: 30px;
+	border-bottom: 1px dashed #ddd;
+}
+/*进入关注结束*/
+
+/*底部*/
+.footer{
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	border-top:1px solid #ddd;
+}
+.footer .menu{
+	height: 48px;
+	background: #fff;
+}
+.footer .menu a{
+	color: #666;
+	font-size: 12px;
+}
+.footer .menu .active{
+	color: #1369c0;
+}
+.footer .menu .menu_ico{
+	text-align: center;
+	width: 20%;
+	float: left;
+	padding-top: 7px;
+}
+.footer .menu .menu_ico img{
+	width: 22px;
+}
+.xinxi{
+	background: #1369c0;
+	text-align: center;
+	color: #fff;
+	line-height: 24px;
+	padding:3px 0px;
+}
+/*底部结束*/
+
+/*列表*/
+.weizhi{
+	height: 30px;
+	line-height: 30px;
+	padding-left: 15px;
+	color: #fff;
+    background: #1369c0;
+}
+.weizhi a{
+	color: #fff;
+}
+.list{
+	margin:0px 15px;
+}
+.list .title{
+	border-left: 3px solid #1369c0;
+	padding-left: 10px;
+	margin-top: 10px;
+	display: inline-block;
+	font-size: 16px;
+}
+.list ul{
+	
+	padding:10px 0px;
+}
+.list ul a{
+	color: #333;
+}
+.list ul li{
+	list-style: inside;
+	width: 100%;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	height: 30px;
+	line-height: 30px;
+	border-bottom: 1px dashed #ddd;
+}
+/*列表结束*/
+
+
+/*详情页面*/
+.detail{
+	margin:0px 15px;
+	padding-bottom: 15px;
+}
+.detail .title{
+	margin:15px;
+	text-align: center;
+	font-size: 16px;
+}
+.mxycon img{
+	width:100%;
+}
+.mxycon_cont p span{
+	font-size:14px !important;
+}
+/*详情页面结束*/

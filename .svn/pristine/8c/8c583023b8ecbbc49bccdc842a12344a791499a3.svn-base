@@ -1,0 +1,76 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ include file="/WEB-INF/views/modules/cms/front/include/taglib.jsp"%>
+<%@ taglib prefix="sitemesh" uri="http://www.opensymphony.com/sitemesh/decorator" %>
+<!DOCTYPE html>
+<html>
+<head>
+	<title><sitemesh:title default="欢迎光临"/> - ${site.title}</title>
+	<%@include file="/WEB-INF/views/modules/cms/front/include/head.jsp" %>
+ 	<link href="${ctxStatic}/xfwz/Css/public.css" rel="stylesheet" type="text/css" />
+    <link href="${ctxStatic}/xfwz/Css/index.css" rel="stylesheet" type="text/css" />
+   
+    <script src="${ctxStatic}/bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+    
+	<sitemesh:head/>
+	
+</head>
+
+
+<body style="background:#F5F5F5 url('${ctxStatic}/xfwz/Images/bg.png') top center no-repeat;">
+<div class="top indextop" style="margin-top: 8px;">
+	
+    <div class="nav f-cb">
+    	<div class="logo sylogo">
+    		<h1><a title="山西省信访局"><img src="${ctxStatic}/xfwz/Picture/big_logo.png"></a></h1>
+    	</div>   		
+        <div class="clear"></div>
+	</div>
+</div>
+
+<link href='${ctxStatic}/xfwz/Css/index.css' rel="stylesheet" type="text/css" />
+<div class="menulist">
+	<ul>
+	<c:choose>
+	<c:when test="${not empty flag}">
+	    <li><a href="http://www.xfsx.gov.cn" target="_self">首页</a></li>
+	    <c:forEach items="${fnc:getMainNavList(site.id)}" var="category1" varStatus="status">
+<c:if test="${status.index lt 7}">
+<c:if test="${category1.name eq '工作培训'}">
+<li class="${category1.id eq categoryid?'hover':''}"><a><span>${category1.name}</span></a></li>
+
+<%-- <a class="lianjie" href="${category1.url}" target="${category1.target}"><span>${category1.name}</span></a>
+ --%></c:if>
+<c:if test="${category1.name ne '工作培训'}">
+<li class="${category1.id eq categoryid?'hover':''}"><a href="${category1.url}" target="${category1.target}"><span>${category1.name}</span></a></li>
+</c:if>
+</c:if>
+</c:forEach>
+	    </c:when>
+	    <c:otherwise>
+<c:forEach items="${fnc:getMainNavList(site.id)}" var="category" varStatus="status">
+<c:if test="${status.index lt 7}">
+<c:if test="${category.name eq '工作培训'}">
+<li class="${category.id eq categoryid?'hover':''}"><a><span>${category.name}</span></a></li>
+
+<%-- <a class="lianjie" href="${category.url}" target="${category.target}"><span>${category.name}</span></a>
+ --%></c:if>
+<c:if test="${category.name ne '工作培训'}">
+<li class="${category.id eq '2'?'hover':''}"><a href="${category.url}" target="${category.target}"><span>${category.name}</span></a></li>
+</c:if>
+</c:if>
+</c:forEach>
+</c:otherwise>
+</c:choose>
+	</ul>
+	
+</div>
+	
+			<sitemesh:body/>
+			<div class="bottom" style="margin-top:72px;text-align: center;">
+	<div>
+		<img src="${ctxStatic}/xfwz/Picture/bot_img.png" style="margin-left: 5px">
+		<span class="in_fo_font">山西省委省政府信访局 晋ICP备11002801号</span>
+	</div>
+</div>
+</body>
+</html>

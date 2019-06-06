@@ -1,0 +1,270 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ include file="/WEB-INF/views/modules/cms/front/include/taglib.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页</title>
+	<meta name="decorator" content="cms_default_${site.theme}"/>
+	<meta name="description" content="JeeSite ${site.description}" />
+	<meta name="keywords" content="JeeSite ${site.keywords}" />
+	<script type="text/javascript" src="${ctxStatic}/xfwz/Scripts/js.js"></script>
+    <script type="text/javascript" src="${ctxStatic}/xfwz/Scripts/pic.js"></script>
+   <%--  <script src="${ctxStatic}/xfwz/Scripts/tjzwwlanguage.js"></script> --%>
+    <link href="${ctxStatic}/xfwz/Css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    
+   <script type="text/javascript">
+$(document).ready(function(){
+	//访英用焦点图
+	try{
+	$("#kz_focus").Tab({
+		ChangeTime:4000,//转播时间
+		Obutton : true // true：数字、圆点；false：缩略图
+	});
+	}catch(e){}
+})
+</script>
+<style>
+.fuwu_list li {float:left; width:70px; background:url(Images/dot_fw_hd.gif) left no-repeat; padding-left:10px; padding-right:10px;}
+.fuwu_list li a {line-height:30px; color:#333; font-size:14px;}
+.fuwu_rdfw {width:860px; height:248px; margin-left:20px;  overflow:hidden;}
+.fuwu_rdfw li {text-align:center; color:#333; font-size:14px; line-height:28px; width:126px; height:72px; float:left; padding-top:10px;line-height: 72px;}
+.fuwu_rdfw li a {color:#333; font-size:14px;}
+.in_fo_font{
+	position: relative;
+	/* top: -25px;  */
+}
+.zhidulist li{
+	width:43%;
+	float:left;
+	margin-left:45px;
+}
+/*通知公告*/
+.tongzhi{
+	clear: both;
+	text-align: center;
+	line-height: 40px;
+}
+.tongzhi h3{
+	font-size: 20px;
+	font-weight: 700;
+	margin:20px;
+}
+.tongzhi .btn-blue{
+	margin:0px 20px;
+	border:none;
+	outline: none;
+	background: #1369C0;
+	color: #fff;
+	padding:5px 30px;
+	border-radius: 10px;
+}
+.ullist a{
+	color:#323232;
+}
+.menulist a{
+	text-decoration: none;
+}
+.mainlevel a{
+	color:#fff;
+	text-decoration:none;
+}
+</style>
+</head>
+<body>
+<div class="contentcont">
+	<div class="main indexmain">
+		<div class="topNav">
+			
+		
+			<div class="menucon">
+				<div class="dis subcon">
+					<!-- 首页 -->
+					<!-- 首页图片新闻 -->
+		            <div class="tpxw">
+						<div class="home_c02_img">
+							<div id="banner">	
+								<div id="banner_bg"></div>  
+								<!-- 标题背景 -->
+								<div id="banner_info"></div>
+								<ul> 
+								</ul>
+								<div id="banner_list">
+									<c:forEach items="${fnc:getArticleList(site.id, 3, 5, '')}" var="article">
+										<a href='${article.url}' title="${article.title }"  target="_blank"><img src='${article.image}' border="0" alt='${fns:abbr(article.title,50)}' /></a>
+									
+									</c:forEach>
+				                </div>
+							</div>
+						</div>
+					</div>
+					<!-- end  首页图片新闻 -->
+					<div class="jrgz left" >
+						<ul class="sld_title tjgk_title tztj_title sy_tit" style="background:none; padding-left:0;" id="menun2">
+		                	<span class="left" style="margin-top:6px;"><img src="${ctxStatic}/xfwz/Picture/jrgz.jpg" /></span>
+		                	<li class="hover" onMouseOver="setTabx(2,0)"><a href="${ctx}/list-8dbf21fea7984634b524091e06159de6${urlSuffix}" target="_blank">今日关注</a></li>
+		                	
+		                </ul>
+		                <div class="tztjcon" id="mainn2" style="position:relative;">
+			                <div class="dis" style="display: block;">
+			                    <ul class="jrgzcon">
+			                        <c:forEach items="${fnc:getArticleList(site.id, '8dbf21fea7984634b524091e06159de6', 8, '')}" var="article">
+			                        <li><span>[<fmt:formatDate value="${article.updateDate}" pattern="yyyy-MM-dd"/>]</span><i>
+									</i><a href="${article.url}" title="${article.title }" target="_blank">${fns:abbr(article.title,46)}</a></li> 
+									</c:forEach>
+			                        
+			                    </ul>
+
+			                </div>
+			               
+		                </div>
+					</div>
+
+					
+					<!-- 首页结束 -->
+				</div>
+				<div class="subcon">
+					<!-- 通知公告 -->
+					<div class="zfcwh left">
+						<div class="sld_title"><span><a href="${ctx}/list-d49f5d079f914cb89492dd8d39dfa6ca${urlSuffix}" target="_blank">2018年</a></span></div>
+						<ul class="ullist">
+		                                     
+                        <c:forEach items="${fnc:getArticleList(site.id, 'd49f5d079f914cb89492dd8d39dfa6ca', 8, '')}" var="article">
+			                <li><a href="${article.url}" title="${article.title }" target="_blank">${fns:abbr(article.title,46)}</a></li>          
+			                        
+									</c:forEach>
+    	                 
+		                                     
+						</ul>
+					</div>
+					<div class="zfcwh left">
+						<div class="sld_title"><span><a href="${ctx}/list-f6e2aae9c5de4d7cade935907d0bb962${urlSuffix}" target="_blank">2017年</a></span></div>
+						<ul class="ullist">
+		                  <c:forEach items="${fnc:getArticleList(site.id, 'f6e2aae9c5de4d7cade935907d0bb962', 8, '')}" var="article">
+			                <li><a href="${article.url}" title="${article.title }"  target="_blank">${fns:abbr(article.title,46)}</a></li>          
+			                        
+									</c:forEach>                   
+
+		                                     
+						</ul>
+					</div>
+					<!-- 通知公告 -->
+				</div>
+				<div class="subcon">
+					<!-- 制度文件 -->
+					<div class="">
+						<div class="sld_title" style="margin-left:45px;"><span><a href="${ctx}/list-6${urlSuffix}" target="_blank">制度文件</a></span></div>
+						<ul class="ullist zhidulist">
+		                     <c:forEach items="${fnc:getArticleList(site.id, '6', 16, '')}" var="article">
+			                <li><a href="${article.url}" title="${article.title }" target="_blank">${fns:abbr(article.title,46)}</a></li>          
+			                        
+									</c:forEach>                   
+
+		                                     
+						</ul>
+					</div>
+					
+					<!-- 制度文件 -->
+				</div>
+				<div class="subcon">
+					<!-- 工作培训 -->
+					<!-- <div class="zfcwh left">
+						<div class="sld_title"><span>< a href=" ">工作培训</ a></span></div>
+						
+					</div> -->
+					<div class="tongzhi">
+						<h3>通知</h3>
+						<p>请各单位管理员申请Ukey和动态令牌后，进行本单位个性化定制操作。</p >
+						<p>二代身份证读卡器接口请点击左侧的“辅助功能”按钮。</p >
+						<p>业务办理系统 使用手册下载或查看，请点击左侧的“培训手册”按钮。</p >
+						<br>
+						<button class="btn-blue" data-toggle="modal" data-target="#shouce">培训手册</button>
+						<a href="http://59.49.32.213:7070/readidcard.jsp" target="_blank"><button class="btn-blue">辅助功能</button></a>
+					</div>
+					<!-- 模态框（Modal） -->
+					<div class="modal fade" id="shouce" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					    <div class="modal-dialog">
+					        <div class="modal-content">
+					            <div class="modal-header">
+					                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					                <h4 class="modal-title" id="myModalLabel">使用手册在线预览与下载</h4>
+					            </div>
+					            <div class="modal-body">使用手册在线预览 请点击 预览，下载请点击 下载</div>
+					            <div class="modal-footer">
+					                <a href="http://59.49.32.213:7070/sysc/index.html" target="_blank"><button type="button" class="btn btn-default">预览</button></a>
+					               <a href="http://59.49.32.213:7070/Download"> <button type="button" class="btn btn-primary">下载</button></a>
+					            </div>
+					        </div><!-- /.modal-content -->
+					    </div><!-- /.modal -->
+					</div>
+					<!--工作培训结束 -->
+				</div>
+				<div class="subcon">
+					<!-- 信访广角 -->
+					<div>
+						<div class="sld_title" style="margin-left:45px;"><span><a href="${ctx}/list-24${urlSuffix}" target="_blank">信访广角</a></span></div>
+						
+						<ul class="ullist zhidulist">
+		                                     
+                       <c:forEach items="${fnc:getArticleList(site.id, '24', 16, '')}" var="article">
+			                <li><a href="${article.url}" title="${article.title }" target="_blank">${fns:abbr(article.title,46)}</a></li>          
+			                        
+									</c:forEach>   
+                             
+    	                  
+		                                     
+						</ul>
+					</div>
+					<!-- 信访广角结束 -->
+				</div>
+				
+				
+
+
+			</div>
+			<div class="foot_btn">
+				<ul>
+					<li class="mainlevel">
+						<a href="http://www.xfsx.gov.cn/sxxf/BeforGo" target="_blank" class="in_fo_a green"><span class="in_fo_btn icon1"></span><span class=" fl_l">网上信访</span></a>
+					</li>
+					<li class="mainlevel">
+						<a href="http://www.xfsx.gov.cn/sxxf/citylist.html" target="_blank" class="in_fo_a ore"><span class="in_fo_btn icon2"></span><span class=" fl_l">市县信访</span></a>
+					</li>
+					<li class="mainlevel">
+						<a href="http://szxx.shanxi.gov.cn/szxx/sy/index.action" target="_blank" class="in_fo_a pur"><span class="in_fo_btn icon3"></span><span class=" fl_l">省长信箱</span></a>
+					</li>
+					<li class="mainlevel">
+						<a href="http://www.xfsx.gov.cn/sxxf/LxlfCx" target="_blank" class="in_fo_a blue"><span class="in_fo_btn icon4"></span><span class=" fl_l">查询评价</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="indexright">
+			<ul class="zwwb">
+	
+				<li><a class="wx bgpng" id="weixin">微信公众号</a>
+	            <div id="EWM"><img src="${ctxStatic}/xfwz/Picture/weixin.png" width="150" height="150" /></div>
+	            </li>
+				<li><a class="yd bgpng">IOS客户端</a>
+				<div id="EWM" style="top:100px;"><img src="${ctxStatic}/xfwz/Picture/iosapk.png" width="150" height="150" /></div>
+				</li>
+				<li><a class="yx bgpng">安卓客户端</a>
+				<div id="EWM" style="top:190px;"><img src="${ctxStatic}/xfwz/Picture/apk.png" width="150" height="150" /></div>
+				</li>
+			</ul>
+		</div>
+	    <script type="text/javascript">
+		
+			$(function(){
+				$('.zwwb li').hover(function(){
+					$(this).find('#EWM').toggle();
+				})
+			})
+		</script>
+
+	</div>
+
+</div>
+ 
+</body>
+</html>
